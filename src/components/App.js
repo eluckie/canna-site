@@ -1,10 +1,12 @@
 import React from "react";
-import CannaPhoto from "./../img/canna.png";
+import Header from "./Header";
+import CannaControl from "./CannaControl";
 
 function App() {
   return (
     <React.Fragment>
-      <img src={CannaPhoto} alt="cannabis icon" />
+      <Header/>
+      <CannaControl/>
     </React.Fragment>
   );
 }

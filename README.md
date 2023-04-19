@@ -22,11 +22,11 @@ A user should be able to do the following:
 * Increase or decrease the ``quantity`` of an item in the store. For instance, if a user clicks "Buy", the ``quantity`` will decrease by one. If a user clicks "Restock", it will increment by a specified number.
 * When the ``quantity`` of an item is reduced to ``0``, the item should say "Out of Stock". A user should not be able to reduce the ``quantity`` of an item below ``0``.
 
-## Diagram
-![]()
+## Site Diagram
+![site diagram](./src/img/canna-site-diagram.png)
 
-## Components
-![]()
+## Component Diagram
+![component diagram](./src/img/canna-components.png)
 
 ## Setup/Installation Requirements
 
