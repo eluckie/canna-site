@@ -5,6 +5,7 @@ import AboutUs from "./AboutUs";
 import VisitUs from "./VisitUs";
 import StaffPicks from "./StaffPicks";
 import CannaDetail from "./CannaDetail";
+import EditCannaForm from "./EditCannaForm";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class NavBar extends React.Component {
       newCannaVisible: false,
       staffPicksVisible: false,
       inStockList: [],
-      selectedCanna: null
+      selectedCanna: null,
+      editing: false
     };
   }
 
@@ -27,7 +29,8 @@ class NavBar extends React.Component {
       inStocksVisible: false,
       newCannaVisible: false,
       staffPicksVisible: false,
-      selectedCanna: null
+      selectedCanna: null,
+      editing: false
     });
   }
 
@@ -38,7 +41,8 @@ class NavBar extends React.Component {
       inStocksVisible: false,
       newCannaVisible: false,
       staffPicksVisible: false,
-      selectedCanna: null
+      selectedCanna: null,
+      editing: false
     })
   }
 
@@ -49,7 +53,8 @@ class NavBar extends React.Component {
       inStocksVisible: true,
       newCannaVisible: false,
       staffPicksVisible: false,
-      selectedCanna: null
+      selectedCanna: null,
+      editing: false
     });
   }
 
@@ -60,7 +65,8 @@ class NavBar extends React.Component {
       inStocksVisible: false,
       newCannaVisible: false,
       staffPicksVisible: true,
-      selectedCanna: null
+      selectedCanna: null,
+      editing: false
     });
   }
 
@@ -71,7 +77,8 @@ class NavBar extends React.Component {
       inStocksVisible: false,
       newCannaVisible: true,
       staffPicksVisible: false,
-      selectedCanna: null
+      selectedCanna: null,
+      editing: false
     });
   }
 
@@ -88,12 +95,41 @@ class NavBar extends React.Component {
     this.setState({selectedCanna: selectedCanna});
   }
 
+  handleDeletingCanna = (id) => {
+    const newInStockList = this.state.inStockList.filter(canna => canna.id !== id);
+    this.setState({
+      inStockList: newInStockList,
+      selectedCanna: null
+    });
+  }
+
+  handleEditClick = () => {
+    this.setState({editing: true});
+  }
+
+  handleEditingCanna = (cannaToEdit) => {
+    const editedInStockList = this.state.inStockList
+      .filter(canna => canna.id !== this.state.selectedCanna.id)
+      .concat(cannaToEdit);
+    this.setState({
+      inStockList: editedInStockList,
+      editing: false,
+      selectedCanna: null
+    });
+  }
+
   render() {
     let currentlyVisibleState = null;
 
-    if (this.state.selectedCanna != null) {
+    if (this.state.editing) {
+      currentlyVisibleState = <EditCannaForm
+        canna = {this.state.selectedCanna}
+        onEditCanna = {this.handleEditingCanna} />
+    } else if (this.state.selectedCanna != null) {
       currentlyVisibleState = <CannaDetail
-        canna={this.state.selectedCanna}/>
+        canna={this.state.selectedCanna}
+        onClickingDelete = {this.handleDeletingCanna}
+        onClickingEdit = {this.handleEditClick}/>
     } else if (this.state.aboutUsVisible) {
       currentlyVisibleState = <AboutUs />
     } else if (this.state.visitUsVisible) {
