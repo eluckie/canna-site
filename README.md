@@ -2,7 +2,7 @@
 
 #### By E. Luckie ☀️
 
-#### _{Brief description of application}_
+#### This site was created to practice using React to make single-page sites that use local and shared state to be dynamic.
 
 ## Technologies Used
 

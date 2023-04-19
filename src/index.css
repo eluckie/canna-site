@@ -10,3 +10,33 @@ body {
 #header-icon {
   text-align: center;
 }
+
+#padding {
+  padding: 10px;
+}
+
+#accent {
+  font-size: larger;
+  color: darkgreen;
+}
+
+#hours {
+  border: 2px dotted darkgreen;
+  border-radius: 0.95rem;
+  width: 300px;
+  margin: auto;
+  padding: 10px;
+}
+
+#visit-us {
+  padding: 6px;
+  text-align: center;
+}
+
+#about-us {
+  border: 2px dotted darkgreen;
+  border-radius: 0.95rem;
+  width: 600px;
+  margin: auto;
+  padding: 10px;
+}
