@@ -4,6 +4,7 @@ import NewCannaForm from "./NewCannaForm";
 import AboutUs from "./AboutUs";
 import VisitUs from "./VisitUs";
 import StaffPicks from "./StaffPicks";
+import CannaDetail from "./CannaDetail";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class NavBar extends React.Component {
       inStocksVisible: true,
       newCannaVisible: false,
       staffPicksVisible: false,
-      inStockList: []
+      inStockList: [],
+      selectedCanna: null
     };
   }
 
@@ -24,7 +26,8 @@ class NavBar extends React.Component {
       aboutUsVisible: true,
       inStocksVisible: false,
       newCannaVisible: false,
-      staffPicksVisible: false
+      staffPicksVisible: false,
+      selectedCanna: null
     });
   }
 
@@ -34,7 +37,8 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: false,
       newCannaVisible: false,
-      staffPicksVisible: false
+      staffPicksVisible: false,
+      selectedCanna: null
     })
   }
 
@@ -44,7 +48,8 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: true,
       newCannaVisible: false,
-      staffPicksVisible: false
+      staffPicksVisible: false,
+      selectedCanna: null
     });
   }
 
@@ -54,7 +59,8 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: false,
       newCannaVisible: false,
-      staffPicksVisible: true
+      staffPicksVisible: true,
+      selectedCanna: null
     });
   }
 
@@ -64,7 +70,8 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: false,
       newCannaVisible: true,
-      staffPicksVisible: false
+      staffPicksVisible: false,
+      selectedCanna: null
     });
   }
 
@@ -76,10 +83,18 @@ class NavBar extends React.Component {
     });
   }
 
+  handleChangingSelectedCanna = (id) => {
+    const selectedCanna = this.state.inStockList.filter(canna => canna.id === id)[0];
+    this.setState({selectedCanna: selectedCanna});
+  }
+
   render() {
     let currentlyVisibleState = null;
 
-    if (this.state.aboutUsVisible) {
+    if (this.state.selectedCanna != null) {
+      currentlyVisibleState = <CannaDetail
+        canna={this.state.selectedCanna}/>
+    } else if (this.state.aboutUsVisible) {
       currentlyVisibleState = <AboutUs />
     } else if (this.state.visitUsVisible) {
       currentlyVisibleState = <VisitUs />
@@ -91,9 +106,10 @@ class NavBar extends React.Component {
     } else if (this.state.newCannaVisible) {
       currentlyVisibleState = <NewCannaForm/>
     } else {
-      // currentlyVisibleState = <InStock/>
-      currentlyVisibleState = <AboutUs />
-    }
+      currentlyVisibleState = <InStock 
+        cannaList={this.state.inStockList}
+        onCannaSelection={this.handleChangingSelectedCanna}/>
+    } 
 
     return (
       <React.Fragment>
