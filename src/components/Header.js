@@ -6,7 +6,7 @@ function Header() {
     <React.Fragment>
       <div id="center">
         <img src={CannaPhoto} alt="cannabis icon"/>
-        <h1>pot luck canna</h1>
+        <h3>pot luck canna</h3>
         <hr/>
       </div>
     </React.Fragment>

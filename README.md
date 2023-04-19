@@ -28,6 +28,8 @@ A user should be able to do the following:
 ## Component Diagram
 ![component diagram](./src/img/canna-components.png)
 
+<!-- UPDATE BOTH DIAGRAMS -->
+
 ## Setup/Installation Requirements
 
 1. Clone this repository to your desktop

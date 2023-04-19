@@ -13,7 +13,8 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: true,
       newCannaVisible: false,
-      staffPicksVisible: false
+      staffPicksVisible: false,
+      inStockList: []
     };
   }
 
@@ -67,6 +68,14 @@ class NavBar extends React.Component {
     });
   }
 
+  handleAddingNewCanna = (newCanna) => {
+    const newInStockList = this.state.inStockList.concat(newCanna);
+    this.setState({
+      inStockList: newInStockList,
+      newCannaVisible: false
+    });
+  }
+
   render() {
     let currentlyVisibleState = null;
 
@@ -75,24 +84,26 @@ class NavBar extends React.Component {
     } else if (this.state.visitUsVisible) {
       currentlyVisibleState = <VisitUs />
     } else if (this.state.newCannaVisible) {
-      currentlyVisibleState = <NewCannaForm />
+      currentlyVisibleState = <NewCannaForm 
+        onNewCannaCreation={this.handleAddingNewCanna}/>
     } else if (this.state.staffPicksVisible) {
       currentlyVisibleState = <StaffPicks/>
     } else if (this.state.newCannaVisible) {
       currentlyVisibleState = <NewCannaForm/>
     } else {
-      currentlyVisibleState = <InStock/>
+      // currentlyVisibleState = <InStock/>
+      currentlyVisibleState = <AboutUs />
     }
 
     return (
       <React.Fragment>
         <br/>
         <div id="center">
-          <button id="padding" onClick={this.handleAboutUsClick}>About Us</button>
-          <button id="padding" onClick={this.handleVisitUsClick}>Visit Us</button>
-          <button id="padding" onClick={this.handleInStockClick}>Available</button>
-          <button id="padding" onClick={this.handleStaffPicksClick}>Staff Picks</button>
-          <button id="padding" onClick={this.handleNewCannaClick}>Add New Canna</button>
+          <button id="nav-btns" onClick={this.handleAboutUsClick}>About Us</button>
+          <button id="nav-btns" onClick={this.handleVisitUsClick}>Visit Us</button>
+          <button id="nav-btns" onClick={this.handleInStockClick}>Available</button>
+          <button id="nav-btns" onClick={this.handleStaffPicksClick}>Staff Picks</button>
+          <button id="nav-btns" onClick={this.handleNewCannaClick}>Add New Canna</button>
         </div>
         <br/>
         {currentlyVisibleState}
