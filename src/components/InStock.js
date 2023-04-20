@@ -7,16 +7,18 @@ function InStock(props) {
     <React.Fragment>
       <div id="padding">
         {props.cannaList.map((canna) =>
-          <Canna
-            whenCannaClicked={props.onCannaSelection}
-            name={canna.name}
-            type={canna.type}
-            effects={canna.effects}
-            price={canna.price}
-            quantity={canna.quantity}
-            id={canna.id}
-            key={canna.id}/>
-        )}
+          <div id="canna-list">
+            <Canna
+              whenCannaClicked={props.onCannaSelection}
+              name={canna.name}
+              type={canna.type}
+              effects={canna.effects}
+              price={canna.price}
+              quantity={canna.quantity}
+              id={canna.id}
+              key={canna.id}/>
+            </div>
+          )}
         <hr/>
       </div>
     </React.Fragment>

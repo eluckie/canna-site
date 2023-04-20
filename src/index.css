@@ -50,6 +50,15 @@ body {
   border-radius: 0.5rem;
 }
 
+#white-form-btn {
+  background-color: white;
+  color: darkgreen;
+  padding: 6px;
+  text-align: center;
+  margin: 4px;
+  border-radius: 0.5rem;
+}
+
 #nav-btns {
   padding: 8px;
   text-align: center;
@@ -60,4 +69,18 @@ body {
   color: darkgreen;
   font-weight: bold;
   font-size: 16px;
+}
+
+#canna-list {
+  border: 2px dotted darkgreen;
+  border-radius: 0.25rem;
+  padding: 10px;
+  width: 300px;
+  text-align: center;
+  display: inline-block;
+  margin: 6px;
+}
+
+#mini {
+  font-size: 14px;
 }
