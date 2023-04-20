@@ -16,7 +16,7 @@ function CannaDetail(props) {
         </div>
         <h4>{canna.quantity} in stock</h4>
         <br/>
-        <button id="form-btn">buy</button>
+        <button onClick={props.onClickingBuy} id="form-btn">buy</button>
         <span id="padding"></span>
         <button onClick={props.onClickingRestock} id="white-form-btn">restock</button>
         <br/><br/>
@@ -33,7 +33,8 @@ function CannaDetail(props) {
 CannaDetail.propTypes = {
   canna: PropTypes.object,
   onClickingDelete: PropTypes.func,
-  onClickingEdit: PropTypes.func
+  onClickingEdit: PropTypes.func,
+  onClickingBuy: PropTypes.func
 };
 
 export default CannaDetail;
