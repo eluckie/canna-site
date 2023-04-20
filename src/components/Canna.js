@@ -17,7 +17,7 @@ Canna.propTypes = {
   type: PropTypes.string,
   effects: PropTypes.string,
   price: PropTypes.number.isRequired,
-  quantity: PropTypes.number.isRequired,
+  quantity: PropTypes.number,
   id: PropTypes.string,
   whenCannaClicked: PropTypes.func
 };

@@ -6,20 +6,22 @@ function CannaDetail(props) {
 
   return (
     <React.Fragment>
-      <div id="padding">
+      <div id="visit-us">
         <h2>{canna.name}</h2>
         <h4>{canna.type} - ${canna.price} per 3.5g</h4>
         <h4>Effects:</h4>
         <p>{canna.effects}</p>
         <h4>{canna.quantity} in stock</h4>
         <br/>
-        <button>add to cart</button>
+        <button>buy</button>
         <span id="padding"></span>
-        <button>restock</button>
+        <button onClick={props.onClickingRestock}>restock</button>
         <br/><br/>
-        <button onClick={props.onClickingEdit}>edit canna</button>
+        <hr/>
+        <br/>
+        <button onClick={props.onClickingEdit}>edit {canna.name}</button>
         <span id="padding"></span>
-        <button onClick={() => onClickingDelete(canna.id)}>delete canna</button>
+        <button onClick={() => onClickingDelete(canna.id)}>delete {canna.name}</button>
       </div>
     </React.Fragment>
   );

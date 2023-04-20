@@ -6,6 +6,7 @@ import VisitUs from "./VisitUs";
 import StaffPicks from "./StaffPicks";
 import CannaDetail from "./CannaDetail";
 import EditCannaForm from "./EditCannaForm";
+import StockCannaForm from "./StockCannaForm";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class NavBar extends React.Component {
       staffPicksVisible: false,
       inStockList: [],
       selectedCanna: null,
-      editing: false
+      editing: false,
+      stocking: false
     };
   }
 
@@ -30,7 +32,8 @@ class NavBar extends React.Component {
       newCannaVisible: false,
       staffPicksVisible: false,
       selectedCanna: null,
-      editing: false
+      editing: false,
+      stocking: false
     });
   }
 
@@ -42,7 +45,8 @@ class NavBar extends React.Component {
       newCannaVisible: false,
       staffPicksVisible: false,
       selectedCanna: null,
-      editing: false
+      editing: false,
+      stocking: false
     })
   }
 
@@ -54,7 +58,8 @@ class NavBar extends React.Component {
       newCannaVisible: false,
       staffPicksVisible: false,
       selectedCanna: null,
-      editing: false
+      editing: false,
+      stocking: false
     });
   }
 
@@ -66,7 +71,8 @@ class NavBar extends React.Component {
       newCannaVisible: false,
       staffPicksVisible: true,
       selectedCanna: null,
-      editing: false
+      editing: false,
+      stocking: false
     });
   }
 
@@ -78,7 +84,8 @@ class NavBar extends React.Component {
       newCannaVisible: true,
       staffPicksVisible: false,
       selectedCanna: null,
-      editing: false
+      editing: false,
+      stocking: false
     });
   }
 
@@ -118,10 +125,29 @@ class NavBar extends React.Component {
     });
   }
 
+  handleRestockClick = () => {
+    this.setState({stocking: true});
+  }
+
+  handleRestockingCanna = (cannaToStock) => {
+    const editedInStockList = this.state.inStockList
+      .filter(canna => canna.id !== this.state.selectedCanna.id)
+      .concat(cannaToStock);
+    this.setState({
+      inStockList: editedInStockList,
+      stocking: false,
+      selectedCanna: null
+    });
+  }
+
   render() {
     let currentlyVisibleState = null;
 
-    if (this.state.editing) {
+    if (this.state.stocking) {
+      currentlyVisibleState = <StockCannaForm
+        canna={this.state.selectedCanna}
+        onRestockCanna = {this.handleRestockingCanna} />
+    } else if (this.state.editing) {
       currentlyVisibleState = <EditCannaForm
         canna = {this.state.selectedCanna}
         onEditCanna = {this.handleEditingCanna} />
@@ -129,7 +155,8 @@ class NavBar extends React.Component {
       currentlyVisibleState = <CannaDetail
         canna={this.state.selectedCanna}
         onClickingDelete = {this.handleDeletingCanna}
-        onClickingEdit = {this.handleEditClick}/>
+        onClickingEdit = {this.handleEditClick}
+        onClickingRestock = {this.handleRestockClick}/>
     } else if (this.state.aboutUsVisible) {
       currentlyVisibleState = <AboutUs />
     } else if (this.state.visitUsVisible) {

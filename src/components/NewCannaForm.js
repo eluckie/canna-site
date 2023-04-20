@@ -12,7 +12,7 @@ function NewCannaForm(props) {
       type: event.target.type.value,
       effects: event.target.effects.value,
       price: parseInt(event.target.price.value),
-      quantity: parseInt(event.target.quantity.value),
+      quantity: 0,
       id: v4()
     });
   }
