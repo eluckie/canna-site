@@ -5,6 +5,8 @@ import AboutUs from "./AboutUs";
 import VisitUs from "./VisitUs";
 import CannaDetail from "./CannaDetail";
 import EditCannaForm from "./EditCannaForm";
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -14,7 +16,6 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: true,
       newCannaVisible: false,
-      inStockList: [],
       selectedCanna: null,
       editing: false
     };
@@ -76,24 +77,33 @@ class NavBar extends React.Component {
   }
 
   handleAddingNewCanna = (newCanna) => {
-    const newInStockList = this.state.inStockList.concat(newCanna);
-    this.setState({
-      inStockList: newInStockList,
-      newCannaVisible: false
-    });
+    const { dispatch } = this.props;
+    const { name, cat, effects, price, id } = newCanna;
+    const action = {
+      type: "ADD_OR_EDIT_CANNA",
+      name: name,
+      cat: cat,
+      effects: effects,
+      price: price,
+      id: id
+    }
+    dispatch(action);
+    this.setState({newCannaVisible: false});
   }
 
   handleChangingSelectedCanna = (id) => {
-    const selectedCanna = this.state.inStockList.filter(canna => canna.id === id)[0];
+    const selectedCanna = this.props.inStockList[id];
     this.setState({selectedCanna: selectedCanna});
   }
 
   handleDeletingCanna = (id) => {
-    const newInStockList = this.state.inStockList.filter(canna => canna.id !== id);
-    this.setState({
-      inStockList: newInStockList,
-      selectedCanna: null
-    });
+    const { dispatch } = this.props;
+    const action = {
+      type: "DELETE_CANNA",
+      id: id
+    }
+    dispatch(action);
+    this.setState({selectedCanna: null});
   }
 
   handleEditClick = () => {
@@ -101,11 +111,18 @@ class NavBar extends React.Component {
   }
 
   handleEditingCanna = (cannaToEdit) => {
-    const editedInStockList = this.state.inStockList
-      .filter(canna => canna.id !== this.state.selectedCanna.id)
-      .concat(cannaToEdit);
+    const { dispatch } = this.props;
+    const { name, cat, effects, price, id } = cannaToEdit;
+    const action = {
+      type: "ADD_OR_EDIT_CANNA",
+      name: name,
+      cat: cat,
+      effects: effects,
+      price: price,
+      id: id
+    }
+    dispatch(action);
     this.setState({
-      inStockList: editedInStockList,
       editing: false,
       selectedCanna: null
     });
@@ -155,7 +172,7 @@ class NavBar extends React.Component {
         onNewCannaCreation={this.handleAddingNewCanna}/>
     } else {
       currentlyVisibleState = <InStock 
-        cannaList={this.state.inStockList}
+        cannaList={this.props.inStockList}
         onCannaSelection={this.handleChangingSelectedCanna}/>
     } 
 
@@ -174,5 +191,17 @@ class NavBar extends React.Component {
     );
   }
 }
+
+NavBar.propTypes = {
+  inStockList: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  return {
+    inStockList: state
+  }
+}
+
+NavBar = connect(mapStateToProps)(NavBar);
 
 export default NavBar;

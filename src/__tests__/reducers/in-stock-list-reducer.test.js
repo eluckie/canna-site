@@ -36,7 +36,7 @@ describe("inStockListReducer", () => {
   test("Correctly add new canna data to inStockList", () => {
     const { name, cat, effects, price, id } = cannaData;
     action = {
-      type: "ADD_CANNA",
+      type: "ADD_OR_EDIT_CANNA",
       name: name,
       cat: cat,
       effects: effects,
@@ -69,5 +69,5 @@ describe("inStockListReducer", () => {
       }
     });
   });
-  
+
 });

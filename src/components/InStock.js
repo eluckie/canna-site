@@ -6,7 +6,7 @@ function InStock(props) {
   return (
     <React.Fragment>
       <div id="padding">
-        {props.cannaList.map((canna) =>
+        {Object.values(props.cannaList).map((canna) =>
           <div id="canna-list" key={canna.id}>
             <Canna
               whenCannaClicked={props.onCannaSelection}
@@ -14,7 +14,7 @@ function InStock(props) {
               cat={canna.cat}
               effects={canna.effects}
               price={canna.price}
-              quantity={canna.quantity}
+              // quantity={canna.quantity}
               id={canna.id}/>
             </div>
           )}
@@ -25,7 +25,7 @@ function InStock(props) {
 }
 
 InStock.propTypes = {
-  cannaList: PropTypes.array,
+  cannaList: PropTypes.object,
   onCannaSelection: PropTypes.func
 };
 

@@ -1,7 +1,7 @@
 const reducer = (state = {}, action) => {
   const { name, cat, effects, price, id } = action;
   switch(action.type) {
-    case "ADD_CANNA":
+    case "ADD_OR_EDIT_CANNA":
       return Object.assign({}, state, {
         [id]: {
           name: name,
@@ -15,7 +15,7 @@ const reducer = (state = {}, action) => {
       let newState = {...state};
       delete newState[id];
       return newState;
-      
+
   default:
     return state;
   }
