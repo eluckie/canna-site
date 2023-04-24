@@ -15,7 +15,6 @@ class NavBar extends React.Component {
       visitUsVisible: false,
       aboutUsVisible: false,
       inStocksVisible: true,
-      newCannaVisible: false,
       selectedCanna: null,
       editing: false
     };
@@ -26,7 +25,6 @@ class NavBar extends React.Component {
       visitUsVisible: false,
       aboutUsVisible: true,
       inStocksVisible: false,
-      newCannaVisible: false,
       selectedCanna: null,
       editing: false
     });
@@ -37,7 +35,6 @@ class NavBar extends React.Component {
       visitUsVisible: true,
       aboutUsVisible: false,
       inStocksVisible: false,
-      newCannaVisible: false,
       selectedCanna: null,
       editing: false
     })
@@ -48,7 +45,6 @@ class NavBar extends React.Component {
       visitUsVisible: false,
       aboutUsVisible: false,
       inStocksVisible: true,
-      newCannaVisible: false,
       selectedCanna: null,
       editing: false
     });
@@ -59,21 +55,17 @@ class NavBar extends React.Component {
       visitUsVisible: false,
       aboutUsVisible: false,
       inStocksVisible: false,
-      newCannaVisible: false,
       selectedCanna: null,
       editing: false
     });
   }
 
   handleNewCannaClick = () => {
-    this.setState({
-      visitUsVisible: false,
-      aboutUsVisible: false,
-      inStocksVisible: false,
-      newCannaVisible: true,
-      selectedCanna: null,
-      editing: false
-    });
+    const { dispatch } = this.props;
+    const action = {
+      type: "TOGGLE_FORM"
+    }
+    dispatch(action);
   }
 
   handleAddingNewCanna = (newCanna) => {
@@ -88,7 +80,10 @@ class NavBar extends React.Component {
       id: id
     }
     dispatch(action);
-    this.setState({newCannaVisible: false});
+    const action2 = {
+      type: "TOGGLE_FORM"
+    }
+    dispatch(action2);
   }
 
   handleChangingSelectedCanna = (id) => {
@@ -167,7 +162,7 @@ class NavBar extends React.Component {
       currentlyVisibleState = <AboutUs />
     } else if (this.state.visitUsVisible) {
       currentlyVisibleState = <VisitUs />
-    } else if (this.state.newCannaVisible) {
+    } else if (this.props.newCannaVisible) {
       currentlyVisibleState = <NewCannaForm 
         onNewCannaCreation={this.handleAddingNewCanna}/>
     } else {
@@ -193,12 +188,14 @@ class NavBar extends React.Component {
 }
 
 NavBar.propTypes = {
-  inStockList: PropTypes.object
+  inStockList: PropTypes.object,
+  newCannaVisible: PropTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
-    inStockList: state
+    inStockList: state.inStockList,
+    newCannaVisible: state.newCannaVisible
   }
 }
 
