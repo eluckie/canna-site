@@ -7,6 +7,7 @@
 ## Technologies Used
 
 * React
+* Redux
 * JSX
 * JavaScript
 * Markdown
@@ -39,7 +40,7 @@ A user should be able to do the following:
 
 ## Known Bugs
 
-* No known bugs.
+* WIP: add buying & restocking features
 
 ## Stretch Plans
 

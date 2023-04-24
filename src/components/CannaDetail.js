@@ -14,17 +14,17 @@ function CannaDetail(props) {
           <h4>Effects:</h4>
           <p>{canna.effects}</p>
         </div>
-        <h4>{canna.quantity} in stock</h4>
+        {/* <h4>{canna.quantity} in stock</h4>
         <br/>
         <button onClick={props.onClickingBuy} id="form-btn">buy</button>
         <span id="padding"></span>
         <button onClick={props.onClickingRestock} id="white-form-btn">restock</button>
-        <br/><br/>
+        <br/><br/> */}
         <hr/>
         <br/>
         <button onClick={props.onClickingEdit} id="white-form-btn">edit {canna.name}</button>
         <span id="padding"></span>
-        <button onClick={() => onClickingDelete(canna.id)} id="white-form-btn">delete {canna.name}</button>
+        <button onClick={() => onClickingDelete(canna.id)} id="white-form-btn">remove {canna.name}</button>
       </div>
     </React.Fragment>
   );
