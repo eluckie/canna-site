@@ -42,6 +42,7 @@ A user should be able to do the following:
 ## Known Bugs
 
 * WIP: add buying & restocking features
+* forms do not disappear unless site is refreshed or they're filled out - add cancel button or hide forms when clicking on other links
 
 ## Stretch Plans
 

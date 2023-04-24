@@ -15,8 +15,7 @@ class NavBar extends React.Component {
       visitUsVisible: false,
       aboutUsVisible: false,
       inStocksVisible: true,
-      selectedCanna: null,
-      editing: false
+      selectedCanna: null
     };
   }
 
@@ -25,8 +24,7 @@ class NavBar extends React.Component {
       visitUsVisible: false,
       aboutUsVisible: true,
       inStocksVisible: false,
-      selectedCanna: null,
-      editing: false
+      selectedCanna: null
     });
   }
 
@@ -35,8 +33,7 @@ class NavBar extends React.Component {
       visitUsVisible: true,
       aboutUsVisible: false,
       inStocksVisible: false,
-      selectedCanna: null,
-      editing: false
+      selectedCanna: null
     })
   }
 
@@ -45,25 +42,14 @@ class NavBar extends React.Component {
       visitUsVisible: false,
       aboutUsVisible: false,
       inStocksVisible: true,
-      selectedCanna: null,
-      editing: false
-    });
-  }
-
-  handleStaffPicksClick = () => {
-    this.setState({
-      visitUsVisible: false,
-      aboutUsVisible: false,
-      inStocksVisible: false,
-      selectedCanna: null,
-      editing: false
+      selectedCanna: null
     });
   }
 
   handleNewCannaClick = () => {
     const { dispatch } = this.props;
     const action = {
-      type: "TOGGLE_FORM"
+      type: "TOGGLE_NEW_FORM"
     }
     dispatch(action);
   }
@@ -81,7 +67,7 @@ class NavBar extends React.Component {
     }
     dispatch(action);
     const action2 = {
-      type: "TOGGLE_FORM"
+      type: "TOGGLE_NEW_FORM"
     }
     dispatch(action2);
   }
@@ -102,7 +88,11 @@ class NavBar extends React.Component {
   }
 
   handleEditClick = () => {
-    this.setState({editing: true});
+    const { dispatch } = this.props;
+    const action = {
+      type: "TOGGLE_EDIT_FORM"
+    }
+    dispatch(action);
   }
 
   handleEditingCanna = (cannaToEdit) => {
@@ -117,10 +107,11 @@ class NavBar extends React.Component {
       id: id
     }
     dispatch(action);
-    this.setState({
-      editing: false,
-      selectedCanna: null
-    });
+    const action2 = {
+      type: "TOGGLE_EDIT_FORM"
+    }
+    dispatch(action2);
+    this.setState({selectedCanna: null});
   }
 
   // handleRestockingCanna = (cannaToStock) => {
@@ -146,7 +137,7 @@ class NavBar extends React.Component {
   render() {
     let currentlyVisibleState = null;
 
-    if (this.state.editing) {
+    if (this.props.editing) {
       currentlyVisibleState = <EditCannaForm
         canna = {this.state.selectedCanna}
         onEditCanna = {this.handleEditingCanna} />
@@ -189,13 +180,15 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
   inStockList: PropTypes.object,
-  newCannaVisible: PropTypes.bool
+  newCannaVisible: PropTypes.bool,
+  editing: PropTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
     inStockList: state.inStockList,
-    newCannaVisible: state.newCannaVisible
+    newCannaVisible: state.newCannaVisible,
+    editing: state.editing
   }
 }
 

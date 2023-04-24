@@ -12,7 +12,6 @@ function EditCannaForm(props) {
       cat: event.target.cat.value,
       effects: event.target.effects.value,
       price: parseInt(event.target.price.value),
-      quantity: parseInt(canna.quantity),
       id: canna.id
     });
   }

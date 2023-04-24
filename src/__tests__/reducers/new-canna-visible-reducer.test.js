@@ -6,7 +6,7 @@ describe("newCannaVisibleReducer", () => {
   });
 
   test("Toggles form visibility state to true", () => {
-    expect(newCannaVisibleReducer(false, { type: "TOGGLE_FORM" })).toEqual(true);
+    expect(newCannaVisibleReducer(false, { type: "TOGGLE_NEW_FORM" })).toEqual(true);
   });
 
   

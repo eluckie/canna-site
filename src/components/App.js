@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header";
-import CannaControl from "./CannaControl";
+import NavBar from "./NavBar";
 
 function App() {
   return (
     <React.Fragment>
       <Header/>
-      <CannaControl/>
+      <NavBar/>
     </React.Fragment>
   );
 }
