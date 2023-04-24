@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/canna-site/static/css/main.9773c5bf.css",
+    "main.js": "/canna-site/static/js/main.cc3c385a.js",
+    "static/media/canna.png": "/canna-site/static/media/canna.09d79f0768b3f75ef9e1.png",
+    "index.html": "/canna-site/index.html",
+    "main.9773c5bf.css.map": "/canna-site/static/css/main.9773c5bf.css.map",
+    "main.cc3c385a.js.map": "/canna-site/static/js/main.cc3c385a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9773c5bf.css",
+    "static/js/main.cc3c385a.js"
+  ]
+}
