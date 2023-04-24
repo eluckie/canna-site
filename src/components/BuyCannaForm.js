@@ -8,7 +8,7 @@ function BuyCannaForm(props) {
     event.preventDefault();
     props.onBuyCanna({
       name: canna.name,
-      type: canna.type,
+      cat: canna.cat,
       effects: canna.effects,
       price: parseInt(canna.price),
       quantity: parseInt(canna.quantity - parseInt(event.target.quantity.value)),

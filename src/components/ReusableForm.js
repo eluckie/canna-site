@@ -12,7 +12,7 @@ function ReusableForm(props) {
         <span id="padding"></span>
         <input
           type="text"
-          name="type"
+          name="cat"
           placeholder="Sativa/Hybrid/Indica"/>
         <br/><br/>
         <textarea

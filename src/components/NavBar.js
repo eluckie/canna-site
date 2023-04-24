@@ -14,7 +14,6 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: true,
       newCannaVisible: false,
-      staffPicksVisible: false,
       inStockList: [],
       selectedCanna: null,
       editing: false
@@ -27,7 +26,6 @@ class NavBar extends React.Component {
       aboutUsVisible: true,
       inStocksVisible: false,
       newCannaVisible: false,
-      staffPicksVisible: false,
       selectedCanna: null,
       editing: false
     });
@@ -39,7 +37,6 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: false,
       newCannaVisible: false,
-      staffPicksVisible: false,
       selectedCanna: null,
       editing: false
     })
@@ -51,7 +48,6 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: true,
       newCannaVisible: false,
-      staffPicksVisible: false,
       selectedCanna: null,
       editing: false
     });
@@ -63,7 +59,6 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: false,
       newCannaVisible: false,
-      staffPicksVisible: true,
       selectedCanna: null,
       editing: false
     });
@@ -75,7 +70,6 @@ class NavBar extends React.Component {
       aboutUsVisible: false,
       inStocksVisible: false,
       newCannaVisible: true,
-      staffPicksVisible: false,
       selectedCanna: null,
       editing: false
     });

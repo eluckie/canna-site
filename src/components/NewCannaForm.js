@@ -9,10 +9,9 @@ function NewCannaForm(props) {
     event.preventDefault();
     props.onNewCannaCreation({
       name: event.target.name.value,
-      type: event.target.type.value,
+      cat: event.target.cat.value,
       effects: event.target.effects.value,
       price: parseInt(event.target.price.value),
-      quantity: 0,
       id: v4()
     });
   }

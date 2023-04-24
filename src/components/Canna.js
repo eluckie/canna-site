@@ -6,7 +6,7 @@ function Canna(props) {
     <React.Fragment>
       <div onClick={() => props.whenCannaClicked(props.id)}>
         <h2 id="accent">{props.name}</h2>
-        <h4>{props.type}</h4>
+        <h4>{props.cat}</h4>
         <p>${props.price}/eighth</p>
       </div>
     </React.Fragment>
@@ -15,7 +15,7 @@ function Canna(props) {
 
 Canna.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string,
+  cat: PropTypes.string,
   effects: PropTypes.string,
   price: PropTypes.number.isRequired,
   id: PropTypes.string,

@@ -9,7 +9,7 @@ function EditCannaForm(props) {
     event.preventDefault();
     props.onEditCanna({
       name: event.target.name.value,
-      type: event.target.type.value,
+      cat: event.target.cat.value,
       effects: event.target.effects.value,
       price: parseInt(event.target.price.value),
       quantity: parseInt(canna.quantity),

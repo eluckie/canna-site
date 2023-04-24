@@ -8,7 +8,7 @@ function CannaDetail(props) {
     <React.Fragment>
       <div id="visit-us">
         <h2 id="accent">{canna.name}</h2>
-        <p><em>{canna.type}</em></p>
+        <p><em>{canna.cat}</em></p>
         <p><em><span id="mini">${canna.price} per 3.5g</span></em></p>
         <div id="canna-list">
           <h4>Effects:</h4>
